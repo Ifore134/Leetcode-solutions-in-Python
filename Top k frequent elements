@@ -1,0 +1,32 @@
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        hold ={}
+        for i in nums:
+            if i not in hold:
+                hold[i]=1
+            else:
+                hold[i]+=1
+        h=[]
+        kcount =k
+        #max=nums[i]
+        # new idea use the frequencies and create a new hash with them as the key
+
+        arrg = []
+        for i in hold:
+            arrg.append([i, hold[i]])
+            #arrg.append(hold[i])
+
+
+        # modified bubble sort
+        for i in range(len(arrg)):
+            for j in range(i+1,len(arrg)):
+                if arrg[j][1]>arrg[i][1]:
+                    temp = arrg[j]
+                    temp2 = arrg[i]
+                    arrg[j]=temp2
+                    arrg[i] =temp
+        answerr =[]
+        print(arrg)
+        for s in range(k):
+            answerr.append(arrg[s][0])
+        return answerr
