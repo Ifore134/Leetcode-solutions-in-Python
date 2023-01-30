@@ -1,0 +1,28 @@
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        front =[]
+        back =[]
+        fsum =1
+        bsum =1
+        for i in range(len(nums)):
+            fsum = fsum * nums[i]
+            front.append(fsum)
+            
+            bsum = bsum * nums[len(nums)-1-i]
+            back.append(bsum)
+            
+        answer=[]
+        print(back)
+        print(front)
+        for i in range(len(nums)):
+            print(i)
+            # create an array with the element in front and back subtracted by the current num
+            if i ==0:
+                answer.append(back[len(back)-2])# add from back of back
+            elif i==len(nums)-1:
+                answer.append(front[len(nums)-2])
+            else:
+                answer.append(front[i-1]*(back[len(nums)-2-i])) #change back index to len of nums
+
+            
+        return answer
