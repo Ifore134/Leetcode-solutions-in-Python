@@ -1,0 +1,16 @@
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+       point1 =0
+       point2 =1
+       print(len(nums))
+
+       while (point1 <len(nums)-1) and (point2<len(nums)) :
+           print(point1, point2)
+           if nums[point1]==nums[point2]:
+               nums.remove(nums[point1])
+               point1=0
+               point2=1
+           else:
+               point1+=1
+               point2+=1
+       return len(nums)
