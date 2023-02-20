@@ -1,0 +1,21 @@
+class Solution:
+    def isValid(self, s: str) -> bool:
+       hm ={")":"(","]":"[","}":"{"}
+       st =[]
+
+       if len(s)==1:
+           return False
+       if len(s)%2 !=0:
+           return False
+       for i in s:
+           if i not in hm:
+               st.append(i)
+           else:
+               if len(st)<1:
+                   return False
+               m =st.pop()
+               if m != hm[i]:
+                   return False
+       if len(st) != 0:
+           return False
+       return True
