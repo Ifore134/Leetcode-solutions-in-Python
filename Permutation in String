@@ -1,0 +1,26 @@
+class Solution:
+    def checkInclusion(self, s1: str, s2: str) -> bool:
+        
+        for i in range(len(s2)):
+            if (i<= len(s2)-len(s1)) and self.perm(s2[i:i+len(s1)], s1):
+                return True
+        return False
+    
+    
+
+    def perm(self, s1,s2)->bool:
+        h1={}
+        h2={}
+        for i in range(len(s1)):
+            if s1[i] not in h1:
+                h1[s1[i]]=1
+            else:
+                h1[s1[i]]+=1
+            if s2[i] not in h2:
+                h2[s2[i]]=1
+            else:
+                h2[s2[i]]+=1
+        if h1==h2:
+            return True
+        else:
+            return False
